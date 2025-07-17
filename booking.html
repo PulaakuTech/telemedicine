@@ -1,0 +1,158 @@
+<!-- booking.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book Appointment | TeleMedNow</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f2f2f2;
+    }
+    header {
+      background: #0b5ed7;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    footer {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: #333;
+      color: #eee;
+      text-align: center;
+    }
+    main {
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+    label {
+      margin: 0.5rem 0 0.2rem;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      padding: 0.7rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      resize: vertical;
+    }
+    textarea {
+      min-height: 80px;
+    }
+    button {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: #198754;
+      color: white;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #146c43;
+    }
+    #thankYouMessage {
+      display: none;
+      text-align: center;
+      padding: 2rem;
+    }
+    #thankYouMessage a {
+      display: inline-block;
+      margin-top: 1rem;
+      background: #0b5ed7;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>TeleMedNow</h1>
+</header>
+
+<main>
+  <h2>Book Your Appointment</h2>
+  <form id="appointmentForm">
+    <label for="fullname">Full Name *</label>
+    <input type="text" id="fullname" name="fullname" placeholder="Your full name" required />
+    
+    <label for="email">Email *</label>
+    <input type="email" id="email" name="email" placeholder="Your email address" required />
+    
+    <label for="phone">Phone Number *</label>
+    <input type="tel" id="phone" name="phone" placeholder="Your phone number" required />
+    
+    <label for="specialty">Select Specialty *</label>
+    <select id="specialty" name="specialty" required>
+      <option value="" disabled selected>Select a specialty</option>
+      <option value="general-practice">General Practice</option>
+      <option value="cardiology">Cardiology</option>
+      <option value="dermatology">Dermatology</option>
+      <option value="endocrinology">Endocrinology</option>
+      <option value="gastroenterology">Gastroenterology</option>
+      <option value="neurology">Neurology</option>
+      <option value="pediatrics">Pediatrics</option>
+      <option value="psychiatry">Psychiatry</option>
+      <option value="pulmonology">Pulmonology</option>
+      <option value="rheumatology">Rheumatology</option>
+      <!-- Add more specialties as needed -->
+    </select>
+    
+    <label for="date">Preferred Appointment Date *</label>
+    <input type="date" id="date" name="date" required />
+    
+    <label for="time">Preferred Time *</label>
+    <input type="time" id="time" name="time" required />
+    
+    <label for="symptoms">Brief Description of Symptoms or Reason for Visit</label>
+    <textarea id="symptoms" name="symptoms" placeholder="Describe your symptoms or reason for visit (optional)"></textarea>
+    
+    <button type="submit">Submit Appointment Request</button>
+  </form>
+
+  <div id="thankYouMessage">
+    <h3>Thank you for your appointment request!</h3>
+    <p>We will get back to you soon.</p>
+    <a href="login.html">Proceed to Login</a>
+  </div>
+</main>
+
+<footer>
+  &copy; 2025 TeleMedNow. All rights reserved.
+</footer>
+
+<script>
+  const form = document.getElementById('appointmentForm');
+  const thankYouMessage = document.getElementById('thankYouMessage');
+
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent actual form submission
+
+    // You can add form validation or processing here if needed
+
+    form.style.display = 'none'; // Hide the form
+    thankYouMessage.style.display = 'block'; // Show thank you message
+  });
+</script>
+
+</body>
+</html>

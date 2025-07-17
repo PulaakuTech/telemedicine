@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Patient Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
+      display: flex;
+      height: 100vh;
+    }
+    .sidebar {
+      width: 250px;
+      background-color: #2c3e50;
+      color: #fff;
+      padding: 20px;
+    }
+    .sidebar h2 {
+      font-size: 20px;
+      margin-bottom: 30px;
+    }
+    .sidebar a {
+      display: block;
+      color: #ecf0f1;
+      text-decoration: none;
+      margin: 10px 0;
+    }
+    .sidebar a:hover {
+      background-color: #34495e;
+      padding-left: 10px;
+    }
+    .main {
+      flex-grow: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .hidden {
+      display: none;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 10px;
+      text-align: left;
+    }
+    .chat-box {
+      background-color: #e5ddd5;
+      border: 1px solid #ccc;
+      height: 300px;
+      overflow-y: scroll;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+    }
+    .chat-message {
+      max-width: 70%;
+      margin: 5px;
+      padding: 8px 12px;
+      border-radius: 15px;
+      line-height: 1.4;
+    }
+    .chat-message.user {
+      align-self: flex-end;
+      background-color: #dcf8c6;
+    }
+    .chat-message.doctor {
+      align-self: flex-start;
+      background-color: #ffffff;
+    }
+    .chat-input {
+      display: flex;
+      margin-top: 10px;
+    }
+    .chat-input input[type="text"] {
+      flex-grow: 1;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .chat-input button {
+      padding: 10px;
+      background-color: #25d366;
+      border: none;
+      color: white;
+      margin-left: 10px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Patient Panel</h2>
+    <a href="#" onclick="showSection('profile')">Profile</a>
+    <a href="#" onclick="showSection('history')">Medical History</a>
+    <a href="#" onclick="showSection('transactions')">Transaction History</a>
+    <a href="#" onclick="showSection('chat')">Chat with Doctor</a>
+  </div>
+  <div class="main">
+    <h1>Welcome, user@example.com</h1>
+
+    <section id="profile">
+      <h2>Profile / Personal Info</h2>
+      <form>
+        <label>Full Name:</label><br /><input type="text" /><br />
+        <label>Email:</label><br /><input type="email" /><br />
+        <label>Phone:</label><br /><input type="tel" /><br />
+        <label>Blood Group:</label><br /><input type="text" /><br />
+        <label>Upload Profile Picture:</label><br />
+        <input type="file" accept="image/*" /><br />
+      </form>
+    </section>
+
+    <section id="history" class="hidden">
+      <h2>Medical History</h2>
+      <table>
+        <thead><tr><th>Date</th><th>Condition</th><th>Treatment</th></tr></thead>
+        <tbody>
+          <tr><td>2023-10-01</td><td>Malaria</td><td>Artemether</td></tr>
+          <tr><td>2024-01-15</td><td>Typhoid</td><td>Ciprofloxacin</td></tr>
+        </tbody>
+      </table>
+      <button onclick="window.print()">Download as PDF</button>
+    </section>
+
+    <section id="transactions" class="hidden">
+      <h2>Transaction History</h2>
+      <table>
+        <thead><tr><th>Date</th><th>Description</th><th>Amount</th><th>Token</th></tr></thead>
+        <tbody>
+          <tr><td>2025-06-01</td><td>Consultation</td><td>$20</td><td>TKN12345</td></tr>
+          <tr><td>2025-07-10</td><td>Follow-up</td><td>$15</td><td>TKN12346</td></tr>
+        </tbody>
+      </table>
+      <button onclick="window.print()">Export as PDF</button>
+    </section>
+
+    <section id="chat" class="hidden">
+      <h2>Chat with Doctor</h2>
+      <div class="chat-box" id="chatBox">
+        <div class="chat-message doctor">Hello, how can I assist you today?</div>
+        <div class="chat-message user">I’ve been having a headache.</div>
+      </div>
+      <div class="chat-input">
+        <input type="text" placeholder="Type your message..." id="chatInput" />
+        <button onclick="sendMessage()">Send</button>
+      </div>
+      <br />
+      <label>Attach File:</label>
+      <input type="file" /><br /><br />
+      <button style="background-color:#007bff;">Start Audio Call</button>
+      <button style="background-color:#007bff;">Start Video Call</button><br /><br />
+      <button onclick="redirectToWhatsApp()" style="background-color:#25d366;">Chat on WhatsApp instead</button>
+    </section>
+  </div>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('.main section').forEach(s => s.classList.add('hidden'));
+      document.getElementById(id).classList.remove('hidden');
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('chatInput');
+      const msg = input.value.trim();
+      if (msg) {
+        const div = document.createElement('div');
+        div.className = 'chat-message user';
+        div.textContent = msg;
+        document.getElementById('chatBox').appendChild(div);
+        input.value = '';
+        document.getElementById('chatBox').scrollTop = document.getElementById('chatBox').scrollHeight;
+      }
+    }
+
+    function redirectToWhatsApp() {
+      const fullName = 'John Doe';
+      const token = 'TKN12345';
+      const message = encodeURIComponent(`Hello, I am ${fullName}. My transaction token is ${token}. I need to chat with a doctor.`);
+      window.open(`https://wa.me/156784778476787?text=${message}`, '_blank');
+    }
+  </script>
+</body>
+</html>

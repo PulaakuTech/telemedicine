@@ -1,0 +1,127 @@
+<!-- login.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | TeleMedNow</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f2f2f2;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    header {
+      background: #0b5ed7;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    footer {
+      margin-top: auto;
+      padding: 1rem;
+      background: #333;
+      color: #eee;
+      text-align: center;
+    }
+    .login-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 300px;
+      margin: 2rem auto;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    input, select {
+      width: 100%;
+      padding: 0.8rem;
+      margin: 0.5rem 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 0.8rem;
+      background: #0b5ed7;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #084ec0;
+    }
+    .link {
+      text-align: center;
+      margin-top: 1rem;
+    }
+    .link a {
+      color: #0b5ed7;
+      text-decoration: none;
+    }
+    .forgot-password {
+      text-align: right;
+      margin-top: -0.5rem;
+      margin-bottom: 1rem;
+    }
+    .forgot-password a {
+      font-size: 0.9rem;
+      color: #0b5ed7;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>TeleMedNow</h1>
+</header>
+
+<div class="login-container">
+  <h2>Login</h2>
+  <form>
+    <select required>
+      <option value="">I am a...</option>
+      <option value="doctor">Doctor</option>
+      <option value="patient">Patient</option>
+    </select>
+    <input type="email" placeholder="Email" required />
+    <input type="password" placeholder="Password" required />
+    
+    <div class="forgot-password">
+      <a href="#">Forgot Password?</a>
+    </div>
+    
+    <button type="submit">Login</button>
+  </form>
+  <div class="link">
+    <p>Don't have an account? <a href="#">Sign up</a></p>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 TeleMedNow. All rights reserved.
+</footer>
+
+</body>
+<script>
+  const loginForm = document.querySelector('form');
+  loginForm.addEventListener('submit', function(event) {
+    event.preventDefault(); // prevent actual form submit
+    
+    // Here you can add validation if you want
+    
+    // Redirect to dashboard.html after "login"
+    window.location.href = 'dashboard.html';
+  });
+</script>
+
+</html>
