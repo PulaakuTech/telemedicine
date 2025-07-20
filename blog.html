@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog - Exercise is Medicine</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+      background: #fff;
+      color: #333;
+    }
+    header {
+      background-color: #2c3e50;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    nav {
+      background-color: #34495e;
+      overflow: hidden;
+    }
+    nav a {
+      color: white;
+      padding: 14px 16px;
+      display: block;
+      text-align: center;
+      text-decoration: none;
+    }
+    .menu {
+      display: none;
+      flex-direction: column;
+    }
+    .menu.show {
+      display: flex;
+    }
+    .menu-button {
+      background-color: #34495e;
+      color: white;
+      border: none;
+      padding: 14px 16px;
+      width: 100%;
+      text-align: left;
+      font-size: 16px;
+      cursor: pointer;
+      display: none;
+    }
+    @media (max-width: 768px) {
+      .menu-button {
+        display: block;
+      }
+      nav a {
+        border-top: 1px solid #2c3e50;
+      }
+    }
+    @media (min-width: 769px) {
+      .menu {
+        display: flex !important;
+        flex-direction: row;
+        justify-content: center;
+      }
+      nav a {
+        border: none;
+      }
+    }
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    h1, h2, h3 {
+      color: #2c3e50;
+    }
+    ul {
+      margin-left: 1.5rem;
+    }
+    p {
+      margin-bottom: 1rem;
+    }
+    .cta {
+      margin-top: 2rem;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+  </style>
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <header>
+    <h1>Telemedicine Platform</h1>
+  </header>
+
+  <nav>
+    <button class="menu-button" onclick="toggleMenu()">☰ Menu</button>
+    <div class="menu" id="nav-menu">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="team.html">Our Team</a>
+      <a href="consultation.html">Consultation</a>
+      <a href="pharmacy.html">Pharmacy</a>
+      <a href="conditions.html">Conditions We Treat</a>
+      <a href="faqs.html">FAQs</a>
+      <a href="contact.html">Contact</a>
+      <a href="blog.html" aria-current="page" style="background:#2c3e50;">Blog</a>
+    </div>
+  </nav>
+
+  <main>
+    <article>
+      <h2>Exercise is Medicine</h2>
+
+      <p><em>"Exercise is Medicine"</em> is a global health initiative that promotes physical activity as a vital sign of health and an essential component of disease prevention and treatment. At our clinic, we believe in the power of movement to improve lives, manage chronic illnesses, and enhance overall well-being.</p>
+
+      <h3>Why Exercise is Medicine?</h3>
+      <p>Scientific research consistently shows that regular physical activity:</p>
+      <ul>
+        <li>Reduces the risk of chronic diseases like heart disease, diabetes, hypertension, and certain cancers</li>
+        <li>Improves mental health by reducing depression and anxiety</li>
+        <li>Helps manage weight and boosts metabolism</li>
+        <li>Enhances sleep, energy, and overall quality of life</li>
+        <li>Strengthens bones, muscles, and joints</li>
+        <li>Supports cognitive function and healthy aging</li>
+      </ul>
+
+      <h3>Our Approach</h3>
+      <p>We provide tailored exercise prescriptions just like medication, based on your unique health profile, condition, and goals. Our licensed medical professionals collaborate with certified fitness specialists to design safe and effective exercise plans for:</p>
+      <ul>
+        <li>Diabetes and Obesity</li>
+        <li>Hypertension and Cardiovascular Disease</li>
+        <li>Arthritis and Chronic Pain</li>
+        <li>Stroke Recovery and Neurological Conditions</li>
+        <li>Cancer Survivorship</li>
+        <li>Mental Health Conditions (e.g., anxiety, depression)</li>
+        <li>Pre-natal and Post-natal Health</li>
+        <li>General Preventive Health and Wellness</li>
+      </ul>
+
+      <h3>What to Expect</h3>
+      <ul>
+        <li>A complete fitness and medical assessment</li>
+        <li>Personalized exercise prescription</li>
+        <li>Virtual coaching and follow-up sessions</li>
+        <li>Access to educational resources on healthy movement</li>
+        <li>Integration with your overall treatment plan</li>
+      </ul>
+
+      <h3>Start Moving, Stay Healthy</h3>
+      <p>Whether you're living with a chronic condition or simply want to improve your health, our team is here to guide you through safe, evidence-based physical activity. Because at our practice, exercise truly is medicine.</p>
+
+      <p class="cta">📞 Book a Consultation Today<br>📝 Speak to our Exercise Specialist</p>
+    </article>
+  </main>
+
+  <footer>
+    <p style="text-align:center; padding:1rem; background:#2c3e50; color:white;">&copy; 2025 Telemedicine Platform. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('nav-menu');
+      menu.classList.toggle('show');
+    }
+  </script>
+</body>
+</html>
