@@ -16,14 +16,18 @@
       background-color: #0b5ed7;
       color: white;
       padding: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      text-align: center;
+      position: relative;
     }
-    .menu-icon {
-      cursor: pointer;
+    .menu-toggle {
+      position: absolute;
+      left: 1rem;
+      top: 1rem;
       font-size: 1.5rem;
-      padding: 0.5rem;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
     }
     .sidebar {
       position: fixed;
@@ -33,39 +37,33 @@
       height: 100%;
       background-color: #0056b3;
       color: white;
-      padding-top: 2rem;
-      transition: 0.3s;
+      padding-top: 60px;
+      transition: left 0.3s;
       z-index: 1000;
+    }
+    .sidebar.active {
+      left: 0;
     }
     .sidebar a {
       display: block;
       color: white;
       text-decoration: none;
       padding: 1rem;
-      border-bottom: 1px solid #084298;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
-    .sidebar.open {
-      left: 0;
-    }
-    nav {
-      display: flex;
-      gap: 2rem;
-    }
-    nav a {
+    .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 24px;
+      cursor: pointer;
+      background: none;
+      border: none;
       color: white;
-      text-decoration: none;
-      font-weight: bold;
     }
     main {
       text-align: center;
       padding: 3rem 1rem;
-    }
-    main h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    main p {
-      font-size: 1.2rem;
     }
     .btn {
       display: inline-block;
@@ -107,118 +105,65 @@
       text-align: center;
       padding: 1rem;
     }
-    .language-selector {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background-color: rgba(0, 0, 0, 0.8);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 2000;
-    }
-    .language-box {
-      background: white;
-      padding: 2rem;
-      border-radius: 10px;
-      text-align: center;
-    }
-    .language-box h2 {
-      margin-bottom: 1rem;
-    }
-    .language-box button {
-      padding: 0.75rem 1.5rem;
-      margin: 0.5rem;
-      border: none;
-      border-radius: 5px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-    .english-btn {
-      background-color: #0b5ed7;
-      color: white;
-    }
-    .hausa-btn {
-      background-color: green;
-      color: white;
-    }
   </style>
 </head>
 <body>
-  <div class="language-selector" id="languageSelector">
-    <div class="language-box">
-      <h2>Select Your Language</h2>
-      <button class="english-btn" onclick="chooseLanguage('english')">English</button>
-      <button class="hausa-btn" onclick="chooseLanguage('hausa')">Hausa</button>
-    </div>
-  </div>
-
-  <div class="sidebar" id="sidebar">
-    <a href="about.html">About Us</a>
+  <header>
+    <button class="menu-toggle" onclick="toggleMenu()">&#9776;</button>
+    <h1>TelemedCare</h1>
+  </header>
+  <div id="sidebar" class="sidebar">
+    <button class="close-btn" onclick="toggleMenu()">&times;</button>
+    <a href="about.html">About us</a>
     <a href="team.html">Our Team</a>
     <a href="consultation.html">Consultation Service</a>
     <a href="pharmacy.html">Pharmacy Services</a>
     <a href="conditions.html">Conditions We Treat</a>
     <a href="blog.html">Blog</a>
-    <a href="faqs.html">FAQs</a>
-    <a href="contact.html">Contact Us</a>
+    <a href="faq.html">FAQs</a>
+    <a href="contact.html">Contact us</a>
   </div>
-
-  <header>
-    <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
-    <h1>TelemedCare</h1>
-    <div></div>
-  </header>
-
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="booking.html">Book Appointment</a>
-    <a href="login.html">Login</a>
-  </nav>
-
   <main>
-    <h2>Book a consultation with a certified doctor today!</h2>
-    <p>Available 24/7. No wait. 100% secure.</p>
-    <a href="booking.html" class="btn">Book Appointment</a>
+    <h2>Talk to a licensed doctor today!</h2>
+    <p>We are available anytime. No waiting. 100% Confidential.</p>
+    <a href="booking.html" class="btn">Book Now</a>
     <a href="login.html" class="btn" style="background:#0b5ed7;">Login</a>
   </main>
-
   <section class="team-section">
     <h3>Meet Our Team</h3>
     <div class="team-container">
       <div class="team-member">
-        <img src="doctor1.jpg" alt="Doctor 1">
+        <img src="doctor1.jpeg" alt="Doctor 1">
         <p>Doctor Name</p>
       </div>
       <div class="team-member">
-        <img src="doctor2.jpg" alt="Doctor 2">
+        <img src="doctor2.jpeg" alt="Doctor 2">
         <p>Doctor Name</p>
       </div>
       <div class="team-member">
-        <img src="doctor3.jpg" alt="Doctor 3">
+        <img src="doctor3.jpeg" alt="Doctor 3">
+        <p>Doctor Name</p>
+      </div>
+      <div class="team-member">
+        <img src="doctor4.jpeg" alt="Doctor 4">
+        <p>Doctor Name</p>
+      </div>
+      <div class="team-member">
+        <img src="doctor5.jpeg" alt="Doctor 5">
+        <p>Doctor Name</p>
+      </div>
+      <div class="team-member">
+        <img src="doctor6.jpeg" alt="Doctor 6">
         <p>Doctor Name</p>
       </div>
     </div>
   </section>
-
   <footer>
     <p>&copy; 2025 TelemedCare. All rights reserved.</p>
   </footer>
-
   <script>
     function toggleMenu() {
-      const sidebar = document.getElementById('sidebar');
-      sidebar.classList.toggle('open');
-    }
-
-    function chooseLanguage(lang) {
-      const languageSelector = document.getElementById('languageSelector');
-      languageSelector.style.display = 'none';
-      if (lang === 'hausa') {
-        window.location.href = 'indexhausa.html';
-      }
+      document.getElementById('sidebar').classList.toggle('active');
     }
   </script>
 </body>
