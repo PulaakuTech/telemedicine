@@ -1,125 +1,225 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>TeleMedNow</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TelemedCare - Home</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 0; padding: 0;
-      background: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
     }
     header {
-      background: #0b5ed7;
+      background-color: #0b5ed7;
       color: white;
       padding: 1rem;
-      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .menu-icon {
+      cursor: pointer;
+      font-size: 1.5rem;
+      padding: 0.5rem;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #0056b3;
+      color: white;
+      padding-top: 2rem;
+      transition: 0.3s;
+      z-index: 1000;
+    }
+    .sidebar a {
+      display: block;
+      color: white;
+      text-decoration: none;
+      padding: 1rem;
+      border-bottom: 1px solid #084298;
+    }
+    .sidebar.open {
+      left: 0;
+    }
+    nav {
+      display: flex;
+      gap: 2rem;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
     }
     main {
-      padding: 2rem;
       text-align: center;
+      padding: 3rem 1rem;
     }
-    .btn {
-      background: #198754;
-      color: white;
-      padding: 1rem 2rem;
-      text-decoration: none;
-      border-radius: 5px;
+    main h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    main p {
       font-size: 1.2rem;
     }
-    .team {
-      padding: 2rem;
-      background: #ffffff;
-      text-align: center;
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: green;
+      color: white;
+      text-decoration: none;
+      margin: 1rem;
+      border-radius: 5px;
     }
-    .team h2 {
+    .team-section {
+      padding: 2rem;
+      background-color: #fff;
+    }
+    .team-section h3 {
+      text-align: center;
       margin-bottom: 1rem;
     }
     .team-container {
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
-      gap: 1.5rem;
+      justify-content: center;
+      gap: 2rem;
     }
-    .doctor-card {
-      background: #e9ecef;
-      padding: 1rem;
+    .team-member {
       width: 200px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
     }
-    .doctor-img {
+    .team-member img {
       width: 100%;
       height: 200px;
-      background: #ccc;
+      object-fit: cover;
       border-radius: 10px;
-      margin-bottom: 1rem;
-      background-size: cover;
-      background-position: center;
-    }
-    .doctor-name {
-      font-weight: bold;
-      font-size: 1.1rem;
+      border: 2px solid #0b5ed7;
     }
     footer {
-      margin-top: 2rem;
-      padding: 1rem;
-      background: #333;
-      color: #eee;
+      background-color: #0b5ed7;
+      color: white;
       text-align: center;
+      padding: 1rem;
+    }
+    .language-selector {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+    .language-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .language-box h2 {
+      margin-bottom: 1rem;
+    }
+    .language-box button {
+      padding: 0.75rem 1.5rem;
+      margin: 0.5rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .english-btn {
+      background-color: #0b5ed7;
+      color: white;
+    }
+    .hausa-btn {
+      background-color: green;
+      color: white;
     }
   </style>
 </head>
 <body>
-
-<header>
-  <h1>TeleMedNow</h1>
-  <p>Your health, your doctor, online.</p>
-</header>
-
-<main>
-  <h2>Book a consultation with a certified doctor today!</h2>
-  <p>Available 24/7. No wait. 100% secure.</p>
-  <h2>Book a consultation with a certified doctor today!</h2>
-  <a href="login.html" class="btn" style="background:#0b5ed7;">Login</a>
-
-  <a href="booking.html" class="btn">Book Appointment</a>
-</main>
-
-<section class="team">
-  <h2>Meet Our Team</h2>
-  <div class="team-container">
-    <div class="doctor-card">
-      <div class="doctor-img" style="background-image: url('doctor1.jpeg');"></div>
-      <div class="doctor-name">Dr. Mohammed Sadiq Kanko</div>
+  <div class="language-selector" id="languageSelector">
+    <div class="language-box">
+      <h2>Select Your Language</h2>
+      <button class="english-btn" onclick="chooseLanguage('english')">English</button>
+      <button class="hausa-btn" onclick="chooseLanguage('hausa')">Hausa</button>
     </div>
-    <div class="doctor-card">
-      <div class="doctor-img" style="background-image: url('doctor2.jpeg');"></div>
-      <div class="doctor-name">Dr. Etinosa Justice</div>
-    </div>
-    <div class="doctor-card">
-      <div class="doctor-img" style="background-image: url('doctor3.jpeg');"></div>
-      <div class="doctor-name">Dr. Ademola Abdulhakeem</div>
-    </div>
-     <div class="doctor-card">
-      <div class="doctor-img" style="background-image: url('doctor4.jpeg');"></div>
-      <div class="doctor-name">Dr. Nura Usman Majikumna</div>
-    </div>
-     <div class="doctor-card">
-      <div class="doctor-img" style="background-image: url('doctor5.jpeg');"></div>
-      <div class="doctor-name">Dr. Najibullah Bala Sani</div>
-    </div>
-     <div class="doctor-card">
-      <div class="doctor-img" style="background-image: url('doctor6.jpeg');"></div>
-      <div class="doctor-name">Dr. Khadija Usman Dauda</div>
-    </div>
-</section>
+  </div>
 
-<footer>
-  &copy; 2025 TeleMedNow. All rights reserved.
-</footer>
+  <div class="sidebar" id="sidebar">
+    <a href="about.html">About Us</a>
+    <a href="team.html">Our Team</a>
+    <a href="consultation.html">Consultation Service</a>
+    <a href="pharmacy.html">Pharmacy Services</a>
+    <a href="conditions.html">Conditions We Treat</a>
+    <a href="blog.html">Blog</a>
+    <a href="faqs.html">FAQs</a>
+    <a href="contact.html">Contact Us</a>
+  </div>
 
+  <header>
+    <span class="menu-icon" onclick="toggleMenu()">&#9776;</span>
+    <h1>TelemedCare</h1>
+    <div></div>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="booking.html">Book Appointment</a>
+    <a href="login.html">Login</a>
+  </nav>
+
+  <main>
+    <h2>Book a consultation with a certified doctor today!</h2>
+    <p>Available 24/7. No wait. 100% secure.</p>
+    <a href="booking.html" class="btn">Book Appointment</a>
+    <a href="login.html" class="btn" style="background:#0b5ed7;">Login</a>
+  </main>
+
+  <section class="team-section">
+    <h3>Meet Our Team</h3>
+    <div class="team-container">
+      <div class="team-member">
+        <img src="doctor1.jpg" alt="Doctor 1">
+        <p>Doctor Name</p>
+      </div>
+      <div class="team-member">
+        <img src="doctor2.jpg" alt="Doctor 2">
+        <p>Doctor Name</p>
+      </div>
+      <div class="team-member">
+        <img src="doctor3.jpg" alt="Doctor 3">
+        <p>Doctor Name</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 TelemedCare. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('open');
+    }
+
+    function chooseLanguage(lang) {
+      const languageSelector = document.getElementById('languageSelector');
+      languageSelector.style.display = 'none';
+      if (lang === 'hausa') {
+        window.location.href = 'indexhausa.html';
+      }
+    }
+  </script>
 </body>
 </html>
