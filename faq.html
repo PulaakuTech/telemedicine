@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FAQs - Telemedicine Platform</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header, footer {
+      background-color: #2c3e50;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+    }
+    nav {
+      background-color: #34495e;
+      padding: 0.5rem;
+      text-align: center;
+    }
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    main {
+      padding: 2rem;
+    }
+    h2 {
+      text-align: center;
+    }
+    .faq {
+      max-width: 800px;
+      margin: 1rem auto;
+    }
+    .faq-item {
+      background: #f1f1f1;
+      margin-bottom: 1rem;
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .faq-question {
+      background: #3498db;
+      color: white;
+      padding: 1rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .faq-answer {
+      padding: 1rem;
+      display: none;
+      background-color: #ecf0f1;
+    }
+    button {
+      display: block;
+      margin: 2rem auto;
+      padding: 0.8rem 1.5rem;
+      background-color: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #219150;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Telemedicine Platform</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About Us</a>
+    <a href="team.html">Our Team</a>
+    <a href="consultation.html">Consultation</a>
+    <a href="pharmacy.html">Pharmacy</a>
+    <a href="faqs.html">FAQs</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <main>
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq">
+      <div class="faq-item">
+        <div class="faq-question">1. What is telemedicine?</div>
+        <div class="faq-answer">Telemedicine is the use of technology to provide medical care remotely. Patients can consult doctors without visiting a hospital or clinic.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">2. Is my information safe and private?</div>
+        <div class="faq-answer">Yes, your medical data and conversations are encrypted and handled under strict confidentiality and data protection laws.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">3. What kind of issues can be treated through telemedicine?</div>
+        <div class="faq-answer">Common illnesses such as infections, skin conditions, mental health consultations, chronic condition management, and more.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">4. Can I get prescriptions through this platform?</div>
+        <div class="faq-answer">Yes. After your consultation, you can receive e-prescriptions that can be used at our partner pharmacies or delivered to you.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">5. How do I book an appointment?</div>
+        <div class="faq-answer">Click on the “Book Appointment” button on the homepage, fill in the required form, and select a convenient time slot.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">6. Can I speak with the same doctor again?</div>
+        <div class="faq-answer">Yes. You may request a follow-up with the same doctor depending on availability and your medical history.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">7. What should I do in an emergency?</div>
+        <div class="faq-answer">Telemedicine is not suitable for emergencies. Please go to the nearest hospital or call emergency services immediately.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">8. How do payments work?</div>
+        <div class="faq-answer">You will see payment options during the appointment booking process. We support various secure payment methods.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">9. Can I use this service outside my country?</div>
+        <div class="faq-answer">Yes, if local regulations permit. Please check with our support team if you are located outside our main service region.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">10. What devices are supported?</div>
+        <div class="faq-answer">Our platform works on mobile phones, tablets, and computers with internet access and a browser.</div>
+      </div>
+    </div>
+
+    <button onclick="window.location.href='booking.html'">Book an Appointment</button>
+    <button onclick="window.location.href='login.html'">Login</button>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Telemedicine Platform. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const questions = document.querySelectorAll(".faq-question");
+    questions.forEach(q => {
+      q.addEventListener("click", () => {
+        const answer = q.nextElementSibling;
+        answer.style.display = answer.style.display === "block" ? "none" : "block";
+      });
+    });
+  </script>
+
+</body>
+</html>
