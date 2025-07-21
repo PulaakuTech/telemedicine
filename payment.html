@@ -41,19 +41,19 @@
     <h2>Make a Payment</h2>
     <form id="paymentForm">
       <label>Full Name</label>
-      <input type="text" name="name" placeholder="Enter your full name" required />
+      <input type="text" id="name" required />
 
       <label>Email</label>
-      <input type="email" name="email" placeholder="Enter your email" required />
+      <input type="email" id="email" required />
 
       <label>Phone Number</label>
-      <input type="tel" name="phone" placeholder="+234..." required />
+      <input type="tel" id="phone" required />
 
-      <label>Amount</label>
-      <input type="number" name="amount" placeholder="e.g. 5000" required />
+      <label>Amount (₦)</label>
+      <input type="number" id="amount" required />
 
       <label>Service</label>
-      <select name="service" required>
+      <select id="service" required>
         <option value="">--Select Service--</option>
         <option value="Consultation">Consultation</option>
         <option value="Pharmacy">Pharmacy</option>
@@ -66,19 +66,46 @@
   </div>
 </section>
 
+<!-- Paystack JS -->
+<script src="https://js.paystack.co/v1/inline.js"></script>
+
 <script>
-  document.getElementById("paymentForm").addEventListener("submit", function(e) {
+  const paymentForm = document.getElementById("paymentForm");
+
+  paymentForm.addEventListener("submit", function(e) {
     e.preventDefault();
 
-    const name = e.target.name.value;
-    const amount = e.target.amount.value;
-    const service = e.target.service.value;
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone").value;
+    let amount = document.getElementById("amount").value;
+    let service = document.getElementById("service").value;
 
-    // Simulated payment response
-    alert("Payment processing for " + service + " service.\nName: " + name + "\nAmount: ₦" + amount);
-    
-    // You can redirect to Paystack, Flutterwave, Stripe, etc. from here
-    // window.location.href = "https://paystack.com/pay/yourpage";
+    let handler = PaystackPop.setup({
+      key: 'YOUR_PUBLIC_KEY', // Replace with your Paystack public key
+      email: email,
+      amount: amount * 100, // Paystack accepts kobo
+      currency: "NGN",
+      ref: 'TX' + Math.floor((Math.random() * 1000000000) + 1),
+      metadata: {
+        custom_fields: [
+          {
+            display_name: name,
+            variable_name: "service",
+            value: service
+          }
+        ]
+      },
+      callback: function(response) {
+        alert('Payment successful! Reference: ' + response.reference);
+        window.location.href = "success.html";
+      },
+      onClose: function() {
+        alert('Transaction cancelled');
+      }
+    });
+
+    handler.openIframe();
   });
 </script>
 
