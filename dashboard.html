@@ -2,163 +2,165 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Patient Dashboard</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Patient Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f7f7;
+      margin: 0;
+      padding: 0;
+    }
 
-        header {
-            background-color: #007bff;
-            color: #fff;
-            padding: 1rem;
-            text-align: center;
-        }
+    header {
+      background-color: #0d6efd;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        nav {
-            background-color: #333;
-            color: #fff;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-around;
-            padding: 0.5rem 0;
-        }
+    header img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
 
-        nav a {
-            color: white;
-            padding: 0.5rem 1rem;
-            text-decoration: none;
-        }
+    .container {
+      padding: 2rem;
+    }
 
-        nav a:hover {
-            background-color: #555;
-        }
+    .section {
+      background: white;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    }
 
-        .dashboard-container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 1rem;
-        }
+    h2 {
+      margin-bottom: 1rem;
+      color: #0d6efd;
+    }
 
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
 
-        .card {
-            background-color: white;
-            padding: 1rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
+    table th, table td {
+      border: 1px solid #ccc;
+      padding: 0.75rem;
+      text-align: left;
+    }
 
-        .card h3 {
-            margin-top: 0;
-        }
+    .btn {
+      display: inline-block;
+      background: #0d6efd;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+      margin-top: 1rem;
+    }
 
-        .btn {
-            background-color: #007bff;
-            color: white;
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 4px;
-            text-decoration: none;
-        }
+    .chat-box {
+      background-color: #e5e5ea;
+      padding: 1rem;
+      border-radius: 6px;
+    }
 
-        .btn:hover {
-            background-color: #0056b3;
-        }
-
-        footer {
-            text-align: center;
-            background: #333;
-            color: #fff;
-            padding: 1rem;
-            margin-top: 2rem;
-        }
-    </style>
+    .notification-bar {
+      background: #ffc107;
+      color: #212529;
+      text-align: center;
+      padding: 0.75rem;
+    }
+  </style>
 </head>
 
 <body>
-    <header>
-        <h1>Welcome back, Patient 👋</h1>
-        <p>You have 2 upcoming appointments and 1 new lab result</p>
-    </header>
+  <header>
+    <div>
+      <h1>Welcome, <span id="userName">John Doe</span></h1>
+    </div>
+    <div>
+      <img src="user-avatar.jpg" alt="Profile Picture">
+    </div>
+  </header>
 
-    <nav>
-        <a href="#appointments">Appointments</a>
-        <a href="#consult">Consult a Doctor</a>
-        <a href="#records">Medical Records</a>
-        <a href="#prescriptions">Prescriptions</a>
-        <a href="#labs">Lab Results</a>
-        <a href="#messages">Messages</a>
-        <a href="#billing">Billing</a>
-        <a href="#settings">Settings</a>
-    </nav>
+  <div class="notification-bar">
+    <strong>New Notification:</strong> Your appointment with Dr. Smith is confirmed for tomorrow at 10:00 AM.
+  </div>
 
-    <div class="dashboard-container">
-        <div class="card-grid">
-            <div class="card" id="appointments">
-                <h3>Next Appointment</h3>
-                <p>July 25, 2025 - 10:00 AM<br>With Dr. Smith (Cardiology)</p>
-                <a class="btn" href="#">Join Now</a>
-                <a class="btn" href="#">Reschedule</a>
-            </div>
-
-            <div class="card" id="prescriptions">
-                <h3>Active Prescriptions</h3>
-                <p>Metformin 500mg (10 days left)</p>
-                <a class="btn" href="#">Request Refill</a>
-            </div>
-
-            <div class="card" id="labs">
-                <h3>Recent Lab Results</h3>
-                <p>HbA1c: 6.3% (Normal)</p>
-                <a class="btn" href="#">View Full Report</a>
-            </div>
-
-            <div class="card" id="messages">
-                <h3>Unread Messages</h3>
-                <p>You have 1 new message from your doctor.</p>
-                <a class="btn" href="#">Read Now</a>
-            </div>
-
-            <div class="card" id="consult">
-                <h3>Consult a Doctor</h3>
-                <p>Start a new consultation by video, audio or chat.</p>
-                <a class="btn" href="#">Consult Now</a>
-            </div>
-
-            <div class="card" id="records">
-                <h3>Medical Records</h3>
-                <p>Access your documents, visits, and diagnosis history.</p>
-                <a class="btn" href="#">View Records</a>
-            </div>
-
-            <div class="card" id="billing">
-                <h3>Billing & Payments</h3>
-                <p>View and manage your invoices and receipts.</p>
-                <a class="btn" href="#">View Invoices</a>
-            </div>
-
-            <div class="card" id="settings">
-                <h3>Settings</h3>
-                <p>Update your profile and preferences.</p>
-                <a class="btn" href="#">Edit Profile</a>
-            </div>
-        </div>
+  <div class="container">
+    <div class="section">
+      <h2>Profile / Personal Information</h2>
+      <p><strong>Full Name:</strong> John Doe</p>
+      <p><strong>Gender:</strong> Male</p>
+      <p><strong>Date of Birth:</strong> 01/01/1990</p>
+      <p><strong>Blood Group:</strong> O+</p>
+      <p><strong>Allergies:</strong> None</p>
+      <a class="btn" href="edit-profile.html">Edit Profile</a>
     </div>
 
-    <footer>
-        &copy; 2025 Telemedicine Platform | All rights reserved
-    </footer>
+    <div class="section">
+      <h2>Medical History</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Condition</th>
+            <th>Treatment</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2024-11-15</td>
+            <td>Hypertension</td>
+            <td>Medication, Lifestyle Advice</td>
+          </tr>
+        </tbody>
+      </table>
+      <a class="btn" href="medical-history.pdf" download>Download as PDF</a>
+    </div>
+
+    <div class="section">
+      <h2>Transaction History</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Token</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2024-11-15</td>
+            <td>Consultation Fee</td>
+            <td>$20</td>
+            <td>#12345678</td>
+          </tr>
+        </tbody>
+      </table>
+      <a class="btn" href="transaction-history.pdf" download>Export as PDF</a>
+    </div>
+
+    <div class="section">
+      <h2>Chat With Doctor</h2>
+      <div class="chat-box">
+        <p><strong>Chat interface like WhatsApp here...</strong></p>
+        <p><i class="fas fa-paperclip"></i> File Upload | <i class="fas fa-microphone"></i> Audio Call | <i class="fas fa-video"></i> Video Call</p>
+        <a class="btn" href="https://wa.me/7614025388?text=Hello%2C%20I%20am%20name%20surname%2C%20Token%3A%2012345678" target="_blank">Chat on WhatsApp Instead</a>
+      </div>
+    </div>
+  </div>
 </body>
 
 </html>
