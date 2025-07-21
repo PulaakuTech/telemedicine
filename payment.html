@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Online Payment</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f9; }
+    header { background: #007bff; color: white; padding: 20px; text-align: center; }
+    nav { background: #343a40; padding: 10px; display: flex; justify-content: space-around; color: white; flex-wrap: wrap; }
+    nav a { color: white; text-decoration: none; padding: 8px 12px; }
+    nav a:hover { background-color: #495057; border-radius: 4px; }
+    section { padding: 30px; max-width: 600px; margin: auto; }
+    .card { background: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    .card h2 { margin-top: 0; }
+    input, select { width: 100%; padding: 10px; margin: 10px 0; border-radius: 5px; border: 1px solid #ccc; }
+    button { width: 100%; background-color: #007bff; color: white; padding: 10px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; }
+    button:hover { background-color: #0056b3; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Secure Online Payment</h1>
+</header>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About Us</a>
+  <a href="team.html">Our Team</a>
+  <a href="consultation.html">Consultation</a>
+  <a href="pharmacy.html">Pharmacy</a>
+  <a href="conditions.html">Conditions</a>
+  <a href="faq.html">FAQs</a>
+  <a href="contact.html">Contact</a>
+</nav>
+
+<section>
+  <div class="card">
+    <h2>Make a Payment</h2>
+    <form id="paymentForm">
+      <label>Full Name</label>
+      <input type="text" name="name" placeholder="Enter your full name" required />
+
+      <label>Email</label>
+      <input type="email" name="email" placeholder="Enter your email" required />
+
+      <label>Phone Number</label>
+      <input type="tel" name="phone" placeholder="+234..." required />
+
+      <label>Amount</label>
+      <input type="number" name="amount" placeholder="e.g. 5000" required />
+
+      <label>Service</label>
+      <select name="service" required>
+        <option value="">--Select Service--</option>
+        <option value="Consultation">Consultation</option>
+        <option value="Pharmacy">Pharmacy</option>
+        <option value="Lab Test">Lab Test</option>
+        <option value="Follow-up">Follow-up</option>
+      </select>
+
+      <button type="submit">Pay Now</button>
+    </form>
+  </div>
+</section>
+
+<script>
+  document.getElementById("paymentForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = e.target.name.value;
+    const amount = e.target.amount.value;
+    const service = e.target.service.value;
+
+    // Simulated payment response
+    alert("Payment processing for " + service + " service.\nName: " + name + "\nAmount: ₦" + amount);
+    
+    // You can redirect to Paystack, Flutterwave, Stripe, etc. from here
+    // window.location.href = "https://paystack.com/pay/yourpage";
+  });
+</script>
+
+</body>
+</html>
