@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Doctor Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f9; }
+    header { background: #007bff; color: white; padding: 20px; text-align: center; }
+    nav { background: #343a40; padding: 10px; display: flex; justify-content: space-around; color: white; }
+    nav a { color: white; text-decoration: none; padding: 8px 12px; }
+    nav a:hover { background-color: #495057; border-radius: 4px; }
+    section { padding: 20px; }
+    .card { background: white; border-radius: 8px; padding: 15px; margin-bottom: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+    button { background-color: #007bff; color: white; padding: 8px 16px; border: none; border-radius: 5px; cursor: pointer; }
+    button:hover { background-color: #0056b3; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Doctor Dashboard</h1>
+  <p>Welcome, Dr. [Your Name]</p>
+</header>
+
+<nav>
+  <a href="doctor-dashboard.html">Home</a>
+  <a href="patients-list.html">My Patients</a>
+  <a href="appointments.html">Appointments</a>
+  <a href="consultation-requests.html">Consult Requests</a>
+  <a href="medical-records.html">Medical Records</a>
+  <a href="messages.html">Messages</a>
+  <a href="index.html">Logout</a>
+</nav>
+
+<section>
+  <div class="card">
+    <h2>Upcoming Appointments</h2>
+    <p>No upcoming appointments at the moment.</p>
+    <a href="appointments.html"><button>View All</button></a>
+  </div>
+
+  <div class="card">
+    <h2>Consultation Requests</h2>
+    <p>You have 3 new requests.</p>
+    <a href="consultation-requests.html"><button>Review Requests</button></a>
+  </div>
+
+  <div class="card">
+    <h2>Recent Patients</h2>
+    <ul>
+      <li>John Doe - Fever and Headache</li>
+      <li>Mary Johnson - Diabetes Management</li>
+    </ul>
+    <a href="patients-list.html"><button>View All Patients</button></a>
+  </div>
+
+  <div class="card">
+    <h2>Send Message to Patient</h2>
+    <form action="#">
+      <input type="text" placeholder="Patient Name or ID" required />
+      <br/><br/>
+      <textarea rows="4" cols="50" placeholder="Write message..."></textarea>
+      <br/><br/>
+      <button type="submit">Send</button>
+    </form>
+  </div>
+</section>
+
+</body>
+</html>
