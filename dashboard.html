@@ -1,192 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Patient Dashboard</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f4f6f8;
-      display: flex;
-      height: 100vh;
-    }
-    .sidebar {
-      width: 250px;
-      background-color: #2c3e50;
-      color: #fff;
-      padding: 20px;
-    }
-    .sidebar h2 {
-      font-size: 20px;
-      margin-bottom: 30px;
-    }
-    .sidebar a {
-      display: block;
-      color: #ecf0f1;
-      text-decoration: none;
-      margin: 10px 0;
-    }
-    .sidebar a:hover {
-      background-color: #34495e;
-      padding-left: 10px;
-    }
-    .main {
-      flex-grow: 1;
-      padding: 20px;
-      overflow-y: auto;
-    }
-    .hidden {
-      display: none;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-    }
-    table, th, td {
-      border: 1px solid #ccc;
-    }
-    th, td {
-      padding: 10px;
-      text-align: left;
-    }
-    .chat-box {
-      background-color: #e5ddd5;
-      border: 1px solid #ccc;
-      height: 300px;
-      overflow-y: scroll;
-      padding: 10px;
-      display: flex;
-      flex-direction: column;
-    }
-    .chat-message {
-      max-width: 70%;
-      margin: 5px;
-      padding: 8px 12px;
-      border-radius: 15px;
-      line-height: 1.4;
-    }
-    .chat-message.user {
-      align-self: flex-end;
-      background-color: #dcf8c6;
-    }
-    .chat-message.doctor {
-      align-self: flex-start;
-      background-color: #ffffff;
-    }
-    .chat-input {
-      display: flex;
-      margin-top: 10px;
-    }
-    .chat-input input[type="text"] {
-      flex-grow: 1;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    .chat-input button {
-      padding: 10px;
-      background-color: #25d366;
-      border: none;
-      color: white;
-      margin-left: 10px;
-      border-radius: 5px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 0.5rem 0;
+        }
+
+        nav a {
+            color: white;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            background-color: #555;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .card {
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        .btn {
+            background-color: #007bff;
+            color: white;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        .btn:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            text-align: center;
+            background: #333;
+            color: #fff;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+    </style>
 </head>
+
 <body>
-  <div class="sidebar">
-    <h2>Patient Panel</h2>
-    <a href="#" onclick="showSection('profile')">Profile</a>
-    <a href="#" onclick="showSection('history')">Medical History</a>
-    <a href="#" onclick="showSection('transactions')">Transaction History</a>
-    <a href="#" onclick="showSection('chat')">Chat with Doctor</a>
-  </div>
-  <div class="main">
-    <h1>Welcome, user@example.com</h1>
+    <header>
+        <h1>Welcome back, Patient 👋</h1>
+        <p>You have 2 upcoming appointments and 1 new lab result</p>
+    </header>
 
-    <section id="profile">
-      <h2>Profile / Personal Info</h2>
-      <form>
-        <label>Full Name:</label><br /><input type="text" /><br />
-        <label>Email:</label><br /><input type="email" /><br />
-        <label>Phone:</label><br /><input type="tel" /><br />
-        <label>Blood Group:</label><br /><input type="text" /><br />
-        <label>Upload Profile Picture:</label><br />
-        <input type="file" accept="image/*" /><br />
-      </form>
-    </section>
+    <nav>
+        <a href="#appointments">Appointments</a>
+        <a href="#consult">Consult a Doctor</a>
+        <a href="#records">Medical Records</a>
+        <a href="#prescriptions">Prescriptions</a>
+        <a href="#labs">Lab Results</a>
+        <a href="#messages">Messages</a>
+        <a href="#billing">Billing</a>
+        <a href="#settings">Settings</a>
+    </nav>
 
-    <section id="history" class="hidden">
-      <h2>Medical History</h2>
-      <table>
-        <thead><tr><th>Date</th><th>Condition</th><th>Treatment</th></tr></thead>
-        <tbody>
-          <tr><td>2023-10-01</td><td>Malaria</td><td>Artemether</td></tr>
-          <tr><td>2024-01-15</td><td>Typhoid</td><td>Ciprofloxacin</td></tr>
-        </tbody>
-      </table>
-      <button onclick="window.print()">Download as PDF</button>
-    </section>
+    <div class="dashboard-container">
+        <div class="card-grid">
+            <div class="card" id="appointments">
+                <h3>Next Appointment</h3>
+                <p>July 25, 2025 - 10:00 AM<br>With Dr. Smith (Cardiology)</p>
+                <a class="btn" href="#">Join Now</a>
+                <a class="btn" href="#">Reschedule</a>
+            </div>
 
-    <section id="transactions" class="hidden">
-      <h2>Transaction History</h2>
-      <table>
-        <thead><tr><th>Date</th><th>Description</th><th>Amount</th><th>Token</th></tr></thead>
-        <tbody>
-          <tr><td>2025-06-01</td><td>Consultation</td><td>$20</td><td>TKN12345</td></tr>
-          <tr><td>2025-07-10</td><td>Follow-up</td><td>$15</td><td>TKN12346</td></tr>
-        </tbody>
-      </table>
-      <button onclick="window.print()">Export as PDF</button>
-    </section>
+            <div class="card" id="prescriptions">
+                <h3>Active Prescriptions</h3>
+                <p>Metformin 500mg (10 days left)</p>
+                <a class="btn" href="#">Request Refill</a>
+            </div>
 
-    <section id="chat" class="hidden">
-      <h2>Chat with Doctor</h2>
-      <div class="chat-box" id="chatBox">
-        <div class="chat-message doctor">Hello, how can I assist you today?</div>
-        <div class="chat-message user">I’ve been having a headache.</div>
-      </div>
-      <div class="chat-input">
-        <input type="text" placeholder="Type your message..." id="chatInput" />
-        <button onclick="sendMessage()">Send</button>
-      </div>
-      <br />
-      <label>Attach File:</label>
-      <input type="file" /><br /><br />
-      <button style="background-color:#007bff;">Start Audio Call</button>
-      <button style="background-color:#007bff;">Start Video Call</button><br /><br />
-      <button onclick="redirectToWhatsApp()" style="background-color:#25d366;">Chat on WhatsApp instead</button>
-    </section>
-  </div>
+            <div class="card" id="labs">
+                <h3>Recent Lab Results</h3>
+                <p>HbA1c: 6.3% (Normal)</p>
+                <a class="btn" href="#">View Full Report</a>
+            </div>
 
-  <script>
-    function showSection(id) {
-      document.querySelectorAll('.main section').forEach(s => s.classList.add('hidden'));
-      document.getElementById(id).classList.remove('hidden');
-    }
+            <div class="card" id="messages">
+                <h3>Unread Messages</h3>
+                <p>You have 1 new message from your doctor.</p>
+                <a class="btn" href="#">Read Now</a>
+            </div>
 
-    function sendMessage() {
-      const input = document.getElementById('chatInput');
-      const msg = input.value.trim();
-      if (msg) {
-        const div = document.createElement('div');
-        div.className = 'chat-message user';
-        div.textContent = msg;
-        document.getElementById('chatBox').appendChild(div);
-        input.value = '';
-        document.getElementById('chatBox').scrollTop = document.getElementById('chatBox').scrollHeight;
-      }
-    }
+            <div class="card" id="consult">
+                <h3>Consult a Doctor</h3>
+                <p>Start a new consultation by video, audio or chat.</p>
+                <a class="btn" href="#">Consult Now</a>
+            </div>
 
-    function redirectToWhatsApp() {
-      const fullName = 'John Doe';
-      const token = 'TKN12345';
-      const message = encodeURIComponent(`Hello, I am ${fullName}. My transaction token is ${token}. I need to chat with a doctor.`);
-      window.open(`https://wa.me/156784778476787?text=${message}`, '_blank');
-    }
-  </script>
+            <div class="card" id="records">
+                <h3>Medical Records</h3>
+                <p>Access your documents, visits, and diagnosis history.</p>
+                <a class="btn" href="#">View Records</a>
+            </div>
+
+            <div class="card" id="billing">
+                <h3>Billing & Payments</h3>
+                <p>View and manage your invoices and receipts.</p>
+                <a class="btn" href="#">View Invoices</a>
+            </div>
+
+            <div class="card" id="settings">
+                <h3>Settings</h3>
+                <p>Update your profile and preferences.</p>
+                <a class="btn" href="#">Edit Profile</a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Telemedicine Platform | All rights reserved
+    </footer>
 </body>
+
 </html>
